@@ -73,6 +73,7 @@ create table if not exists FACT(
     driverId int,
     constructorId int,
     statusId int,
+    circuitId int,
     driverStandingsId int,
     constructorStandingsId int,
     dateId int,
@@ -88,13 +89,16 @@ create table if not exists FACT(
     fastestLap int,
     fastestLapTime time,
     fastestLapSpeed float,
+    
     foreign key (raceId) references DIM_Race(raceId),
     foreign key (driverId)references DIM_Driver(driverId),
     foreign key (constructorId) references DIM_Constructors(constructorId),
     foreign key (statusId) references DIM_Status(statusId),
     foreign key (driverStandingsId) references DIM_driverStandings(driverStandingsId),
     foreign key (constructorStandingsId) references DIM_constructorStandings(constructorStandingsId),
-    foreign key (dateId) references DIM_date(dateId)
+    foreign key (dateId) references DIM_date(dateId),
+    foreign key (circuitId) references DIM_Circuit(circuitId)
+
 );
 create table if not exists FACT_Lap(
     raceId int,
